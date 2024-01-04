@@ -9,7 +9,7 @@ public static void main (String [] args) {
 	int initialAllumettes =21;
 	int restAllumettes = 0;
 	
-	int players = 0;
+	int players = 1;//petite modif ici
 	//System.out.println("le nombre d'allumettes est de " + initialAllumettes);
 	
 	System.out.println("joueur 1, indiquez votre nom");
@@ -17,11 +17,37 @@ public static void main (String [] args) {
 	System.out.println("joueur 2, quel est votre nom ?");
 	String name2= scanner.nextLine();
 	System.out.println("Bienvenue " + name1 + " et "+  name2 + " au jeu du Nim !");
+	
+	// explication des rêgles 
+	
+	System.out.println("Dans ce jeu, nous avons un tas de 21 allumettes. Chaques joueur peut enlever entre 1 et 4 allumettes. Le perdant sera celui qui enlève la dernière.");
+
+
+//création du jeu 
+
+while(initialAllumettes >0) {
+	System.out.println("Allumettes restantes" + initialAllumettes);
+	System.out.println("joueur" + players +  (players == 1 ? name1 : name2)  +"combien d'allumettes souhaitez vous retirer ?");
+	
+	int choise = scanner.nextInt();
+	
+	//on vérifie si le choix est bon
+	
+	if (choise >=1 && choise <= 4 && choise <= initialAllumettes) {
+		initialAllumettes -= choise; //	soustrait deux valeurs et stocke le résultat dans la variable
+		players = (players ==1) ? 2:1; //ça sert à changer de joueur et variable ternaire pour remplacer if else
+		
+	}else {
+		System.out.println("choix invalide");
+		
+
+	}
+}
 }
 }
 
 //créer un programme avec 21 alumettes 
 //doit arbitrer une partie entre 2 humains dont le nom est demandé au démarrage - ok
-//exposer les règles 
+//exposer les règles  - ok
 //1 on peut retirer 1 à 4 allumette
 //2celui qui enlève la dernière a perdu
